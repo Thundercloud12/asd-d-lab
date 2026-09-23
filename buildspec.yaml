@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  pre_build:
+    commands:
+      - echo "Checking files before deployment..."
+      - ls -la
+  build:
+    commands:
+      - echo "No build steps required for static HTML."
+  post_build:
+    commands:
+      - echo "Deploying index.html to S3 bucket..."
+      # Replace 'your-s3-bucket-name' with your actual AWS S3 bucket name
+      - aws s3 cp index.html s3://your-s3-bucket-name/ --acl public-read
+
+artifacts:
+  files:
+    - index.html
