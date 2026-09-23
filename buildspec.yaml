@@ -13,10 +13,5 @@ phases:
       - echo "No build steps required for static HTML."
   post_build:
     commands:
-      - echo "Deploying index.html to S3 bucket..."
-      # Replace 'your-s3-bucket-name' with your actual AWS S3 bucket name
-      - aws s3 cp index.html s3://sotre-build-artifact-vb/ --acl public-read
-
-artifacts:
-  files:
-    - index.html
+      - echo "Deploying index.html securely to private S3 bucket..."
+      - aws s3 cp index.html s3://sotre-build-artifact-vb/
